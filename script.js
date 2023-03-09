@@ -10,10 +10,9 @@ var numberArr =
 ['1','2','3','4','5','6','7','8','9'];
 
 var generateBtn = document.querySelector("#generate");
-
-generateBtn.addEventListener("click", writePassword);
 //Add event listener to generate password on the click of the button
-//generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
+
 
 function writePassword() {
     var correctPrompts = getPromps();  //returns true or false
