@@ -1,4 +1,3 @@
-// Assignment Code
 var characterLength = 8;
 var choiceArr = [];
 var specialCharArr = 
@@ -10,12 +9,37 @@ var upperCaseArr =
 var numberArr = 
 ['1','2','3','4','5','6','7','8','9'];
 
-
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword(){
-  
+generateBtn.addEventListener("click", writePassword);
+//Add event listener to generate password on the click of the button
+//generateBtn.addEventListener("click", writePassword);
+
+function writePassword() {
+    var correctPrompts = getPromps();  //returns true or false
+    var passwordText = document.querySelector("#password");
+
+    if(correctPrompts) {
+        var newPassword = generatePassword();
+        passwordText.value = newPassword;
+    }  else {
+        passwordText.value = "";
+
+    }
 }
+
+  function generatePassword() {
+    //i would generatePassword based on prompts
+    var password = "" ;
+    for(var i = 0; i < characterLength; i++ ) {
+        var randomIndex = Math.floor(Math.random() * choiceArr.length);
+        password = password + choiceArr[randomIndex];
+    }
+    return password;
+
+  }
+
+
 
 function getPromps(){
   choiceArr = [];
@@ -42,12 +66,4 @@ function getPromps(){
   return true;
 }
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
